@@ -13,12 +13,10 @@ instance FromJSON ResultStatus
 instance ToJSON ResultStatus
 
 okStatusWith :: Maybe Tunnel -> ResultStatus
-okStatusWith tunnel =
-  ResultStatus "OK" tunnel
+okStatusWith = ResultStatus "OK"
 
 okStatus :: ResultStatus
-okStatus =
-  ResultStatus "OK" Nothing
+okStatus = okStatusWith Nothing
 
 errorStatus :: ResultStatus
 errorStatus =

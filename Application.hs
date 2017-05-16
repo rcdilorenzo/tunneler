@@ -5,7 +5,6 @@ module Application where
 import Tunneler.Common
 import Web.Simple
 import Web.Frank
-import Data.String
 import System.Process
 import System.Exit
 import Control.Monad.IO.Class
