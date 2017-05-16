@@ -1,0 +1,25 @@
+name:                tunneler
+version:             0.0.0.0
+--author:              YOUR NAME
+--maintainer:          your@email.com
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable tunneler
+  hs-source-dirs: ., Tunneler
+  main-is: Main.hs
+  build-depends:
+    base
+    , simple >= 0.8.0
+    , wai
+    , wai-extra
+    , process
+    , bytestring
+    , aeson
+    , warp
+    , http-conduit
+    , http-client
+    , text
+    , unordered-containers
+
