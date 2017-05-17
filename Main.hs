@@ -5,10 +5,10 @@ import Application
 import Network.Wai.Handler.Warp
 import Network.Wai.Middleware.RequestLogger
 import System.Environment
+import Tunneler.Common
 
 main :: IO ()
 main = do
-  env <- getEnvironment
-  let port = maybe 3000 read $ lookup "PORT" env
-  app (run port . logStdout)
+  settings <- newAppSettings
+  app (run (envPort settings) . logStdout)
 

@@ -19,7 +19,8 @@ executable tunneler
     , aeson
     , warp
     , http-conduit
-    , http-client
+    , http-types
+    , base64-bytestring >= 1.0
     , text
     , unordered-containers
 
