@@ -28,7 +28,7 @@ If you're trying to hack on this project, it would be most useful to run `stack 
 If you just want to install it as a cron job, once you run `stack` a binary should be available somewhere in the `.stack-work/dist` directory. Then, you can update your crontab to including something like this:
 
 ```
-@reboot PORT=12345 /path/to/binary/tunneler
+@reboot PORT=12345 TUSER=mysecretuser TPSWD=mysecurepassword /path/to/binary/tunneler
 ```
 
 ## Copyright (GPLv3)
