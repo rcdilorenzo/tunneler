@@ -1,7 +1,7 @@
 # tunneler-server
 Server for managing a set of ngrok connections through an http/https port
 
-This is a personal system I use to access one of my personal devices from my home network since I only exposed ports 80 (HTTP) and 443 (HTTPS) through the firewall for enhanced security. This repository is one of my designed experiments to learn Haskell as well as making an Apple Watch app as a client. Feel free to open issues if you find them, but this is primarily for my own use.
+This is a personal system I use to access one of my personal devices from my home network since I only exposed ports 80 (HTTP) and 443 (HTTPS) through the firewall for enhanced security. This repository is one of my designed experiments to learn Haskell as well as making an [Apple Watch app as a client](https://github.com/rcdilorenzo/tunneler-client). Feel free to open issues if you find them, but this is primarily for my own use.
 
 ## Setup
 
