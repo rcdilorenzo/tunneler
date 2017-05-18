@@ -32,21 +32,25 @@ app runner = do
         runCmd "killall ngrok" okStatus errorStatus
 
       get "/actions/status" $ do
-        result <- liftIO (try getTunnelInfo
-                          :: IO (Either HttpException (Maybe Tunnel)))
-        case result of
-          Left _ ->
-            respond $ okJson $ encode errorStatus
-
-          Right maybeTunnel ->
-            runCmd "pgrep ngrok > /dev/null"
-              (ResultStatus "RUNNING" maybeTunnel)
-              (ResultStatus "STOPPED" Nothing)
+        runningStatus <- liftIO getRunningTunnelStatus
+        runCmd "pgrep ngrok > /dev/null"
+          runningStatus
+          (ResultStatus "STOPPED" Nothing)
 
       post "/actions/start" $ do
-        let command = "ngrok start --all -log=stdout > /dev/null"
-        result <- liftIO $ spawnCommand command
+        let command = "/usr/local/bin/ngrok start --all -log=stdout > /dev/null"
+        _ <- liftIO $ spawnCommand command
         respond $ okJson $ encode (ResultStatus "STARTING" Nothing)
+
+getRunningTunnelStatus :: IO ResultStatus
+getRunningTunnelStatus = do
+  result <- liftIO (try getTunnelInfo
+                    :: IO (Either HttpException (Maybe Tunnel)))
+
+  return $ ResultStatus "RUNNING" (tunnelResult result)
+    where
+      tunnelResult (Left _)            = Nothing
+      tunnelResult (Right maybeTunnel) = maybeTunnel
 
 
 runCmd :: String -> ResultStatus -> ResultStatus -> ControllerT s IO b

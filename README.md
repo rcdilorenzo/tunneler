@@ -5,7 +5,7 @@ This is a personal system I use to access one of my personal devices from my hom
 
 ## Setup
 
-Ngrok must be installed and you must have a `.ngrok2/ngrok.yml` file in your home directory. Ngrok must also of course be in your path.
+Ngrok must be installed at `/usr/local/bin/ngrok` and you must have a `.ngrok2/ngrok.yml` file in your home directory. Ngrok must also of course be in your path.
 
 Example Ngrok Config:
 
